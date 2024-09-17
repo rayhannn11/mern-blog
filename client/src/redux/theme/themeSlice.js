@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-// comit
+// comitt
 const initialState = {
   theme: "light",
 };
