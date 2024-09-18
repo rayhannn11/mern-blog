@@ -9,7 +9,6 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
 
-
 dotenv.config();
 
 mongoose
@@ -20,8 +19,6 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
-const __dirname = path.resolve();
 
 const app = express();
 
