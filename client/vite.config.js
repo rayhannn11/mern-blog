@@ -7,7 +7,8 @@ export default defineConfig({
     proxy: {
       "/api": {
         target: "https://mern-blog-blush-three.vercel.app",
-        secure: true,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },
