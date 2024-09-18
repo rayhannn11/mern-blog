@@ -8,6 +8,7 @@ const commentRoutes = require("./routes/comment.route.js");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
+const serverless = require("serverless-http");
 
 dotenv.config();
 
@@ -52,3 +53,5 @@ app.use((err, req, res, next) => {
     message,
   });
 });
+
+module.exports.handler = serverless(app);
