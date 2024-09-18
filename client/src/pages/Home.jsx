@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import CallToAction from "../components/CallToAction";
 import { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
-import { fetchData } from "./api";
+import { fetchData } from "../api";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
