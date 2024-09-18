@@ -6,7 +6,7 @@ const authRoutes = require("./routes/auth.route.js");
 const postRoutes = require("./routes/post.route.js");
 const commentRoutes = require("./routes/comment.route.js");
 const cookieParser = require("cookie-parser");
-const cors = require("cors");
+// const cors = require("cors");
 const path = require("path");
 
 dotenv.config();
@@ -24,20 +24,20 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: ["https://yukbelajar.vercel.app"],
-    methods: ["POST", "GET", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+app.listen(3000, () => {
+  console.log("Server is running on port 3000!");
+});
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/comment", commentRoutes);
 
-app.use(express.static(__dirname + "/public/views"));
+app.use(express.static(path.join(__dirname, "/client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
@@ -48,5 +48,3 @@ app.use((err, req, res, next) => {
     message,
   });
 });
-
-module.exports = app;
